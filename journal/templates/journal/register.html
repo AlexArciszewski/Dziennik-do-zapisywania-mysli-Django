@@ -1,0 +1,34 @@
+<html>
+    <head>
+
+        <title> Edenthought | Register </title>
+
+
+
+    </head>
+    <div class="container">
+
+        <h3> Create your account </h3>
+
+        <h5> Share your thoughts today </h5>
+
+        <br>
+        <br>
+        
+        <form method="POST" autocomplete="off">
+
+            {%  csrf_token  %}
+
+            {{RegistrationForm.as_p}}
+
+            <br> <br>
+
+            <button type="submit">  Create account </button>
+            
+        </form>
+        
+            
+    </div>
+
+
+</html>
