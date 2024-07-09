@@ -31,6 +31,8 @@ urlpatterns = [
     
     path("dashboard", views.dashboard, name="dashboard"),
     
+    path("user_logout", views.user_logout, name="user_logout"),
+    
 ]
 
 

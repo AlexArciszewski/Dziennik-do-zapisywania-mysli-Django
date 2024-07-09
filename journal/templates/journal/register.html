@@ -1,34 +1,44 @@
+{% load static %}
 <html>
-    <head>
 
-        <title> Edenthought | Register </title>
-
+<head>
 
 
-    </head>
-    <div class="container">
+    <title> Edenthought | Register </title>
 
-        <h3> Create your account </h3>
 
-        <h5> Share your thoughts today </h5>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/morph/bootstrap.min.css">
 
-        <br>
-        <br>
-        
-        <form method="POST" autocomplete="off">
 
-            {%  csrf_token  %}
+    <link rel="stylesheet" type="text/css" href="{% static ' css/styles.css'    %}">
 
-            {{RegistrationForm.as_p}}
+</head>
 
-            <br> <br>
+<br>
 
-            <button type="submit">  Create account </button>
-            
-        </form>
-        
-            
-    </div>
+<div class="container bg-white shadow-md p-5 form-layout">
 
+    <h3> Create your account </h3>
+
+    <h5> Share your thoughts today </h5>
+
+    <br>
+    <br>
+
+    <form method="POST" autocomplete="off">
+
+        {% csrf_token %}
+
+        {{RegistrationForm.as_p}}
+
+        <br> <br>
+
+        <button type="submit"> Create account </button>
+
+    </form>
+
+
+</div>
+<br>
 
 </html>
