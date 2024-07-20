@@ -11,6 +11,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 
+from django.contrib import messages
+
 
 def homepage(request):
     
@@ -27,6 +29,8 @@ def register(request):
         if form.is_valid():
             
             form.save()
+            
+            messages.success(request, "User Created Successfully!")
             
             return redirect('my_login')
             

@@ -1,4 +1,7 @@
 {% load static %}
+
+{% load crispy_forms_tags %}
+
 <html>
 
 <head>
@@ -22,21 +25,20 @@
 
     <h5> Share your thoughts today </h5>
 
-    <br>
+    <hr>
     <br>
 
     <form method="POST" autocomplete="off">
 
         {% csrf_token %}
 
-        {{RegistrationForm.as_p}}
+        {{RegistrationForm|crispy}}
 
-        <br> <br>
+        <br>
 
-        <button type="submit"> Create account </button>
+        <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit"> Create account </button>
 
     </form>
-
 
 </div>
 <br>
