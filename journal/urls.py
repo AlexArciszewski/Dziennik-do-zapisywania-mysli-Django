@@ -35,6 +35,8 @@ urlpatterns = [
     
     path("create_thought", views.create_thought, name="create_thought"),
     
+    path("my_thoughts", views.my_thoughts, name="my_thoughts"),
+    
 ]
 
 

@@ -13,6 +13,9 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib import messages
 
+from  . models import Thought
+
+
 
 def homepage(request):
     
@@ -96,14 +99,25 @@ def create_thought(request):
             
             thought.save()
             
-            return redirect('dashboard')
+            return redirect('my_thoughts')
     
     context = {'CreateThoughtForm': form}
     
     return render(request, 'journal/create_thought.html',context)
 
 
-
+@login_required(login_url='my_login')
+def my_thoughts(request):
+    
+    current_user =  request.user.id
+    
+    thought = Thought.objects.all().filter(user=current_user)
+    
+    
+    context = { 'AllThoughts': thought   }
+    
+    
+    return render(request,'journal/my_thoughts.html', context )
 
 
 

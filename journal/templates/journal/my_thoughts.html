@@ -1,0 +1,41 @@
+{% extends 'journal/navbar.html'  %}
+
+
+{%  block content   %}
+
+    <h3>   My Thought   </h3>
+    
+    <br>
+    
+    {%  for thought in  AllThoughts %}
+
+
+
+    <div class="container bg-white shadow-md p-5 form-layout">
+
+        {{thought.tittle}}
+
+        <br>
+
+        {{thought.content}}
+
+        <br>
+
+        {{thought.date_posted}}
+        
+        <br>
+        <br>
+
+        {{thought.user}}
+        
+    </div>
+
+    <br>
+
+    {% endfor %}
+
+
+    <br>
+
+
+{% endblock  %}
