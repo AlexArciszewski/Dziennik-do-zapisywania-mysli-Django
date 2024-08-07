@@ -1,41 +1,46 @@
-{% extends 'journal/navbar.html'  %}
+{% extends 'journal/navbar.html' %}
 
 
-{%  block content   %}
+{% block content %}
 
-    <h3>   My Thought   </h3>
-    
-    <br>
-    
-    {%  for thought in  AllThoughts %}
+<h3> My Thought </h3>
 
+<br>
 
+{% for thought in AllThoughts %}
 
-    <div class="container bg-white shadow-md p-5 form-layout">
+<div class="container bg-white shadow-md p-5 form-layout">
 
-        {{thought.tittle}}
-
-        <br>
-
-        {{thought.content}}
-
-        <br>
-
-        {{thought.date_posted}}
-        
-        <br>
-        <br>
-
-        {{thought.user}}
-        
-    </div>
+    {{thought.tittle}}
 
     <br>
 
-    {% endfor %}
-
+    {{thought.content}}
 
     <br>
 
+    {{thought.date_posted}}
 
-{% endblock  %}
+    <br>
+    <br>
+
+    {{thought.user}}
+
+    <br>
+    <br>
+    <a href="{% url  'update_thought' thought.id %}"> Update a thought </a>
+
+    <br>
+    <br>
+
+    <a href="{% url  'delete_thought' thought.id %}"> Delete a thought </a>
+
+</div>
+
+<br>
+
+{% endfor %}
+
+<br>
+
+{% endblock %}

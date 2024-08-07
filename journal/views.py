@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from . forms import CreateUserForm, LoginForm, ThoughtForm
+from . forms import CreateUserForm, LoginForm, ThoughtForm, UpdateUserForm
 # Create your views here.
 
 from django.contrib.auth.models import auth
@@ -118,6 +118,88 @@ def my_thoughts(request):
     
     
     return render(request,'journal/my_thoughts.html', context )
+
+
+
+@login_required(login_url='my_login')
+def update_thought(request, pk):
+    
+    try:
+    
+        thought = Thought.objects.get(id=pk, user =request.user)
+    
+    except:
+        return redirect("my_thoughts.html")
+    
+    form = ThoughtForm(instance=thought)
+    
+    if request.method == 'POST':
+        
+        form = ThoughtForm(request.POST, instance=thought)
+        
+        if form.is_valid():
+            
+            form.save()
+            
+            return redirect('my_thoughts')
+    
+    context = {'UpdateThought' : form}
+    
+    return render(request,'journal/update_thought.html', context)
+
+
+@login_required(login_url='my_login')
+def delete_thought(request, pk):
+    
+    try:
+        thought = Thought.objects.get(id=pk, user =request.user)
+    
+    except:
+        return redirect("my_thoughts.html")
+    
+    if request.method == 'POST':
+        
+        thought.delete()
+
+        return redirect('my_thoughts')
+    
+    
+    
+    return render(request,'journal/delete_thought.html')
+
+
+
+
+@login_required(login_url='my_login')
+def profile_management(request):
+    
+    form = UpdateUserForm(instance=request.user)
+    
+    
+
+    if request.method == 'POST':
+        
+        form = UpdateUserForm(request.POST,instance=request.user)
+        
+        if form.is_valid():
+            
+            form.save()
+            
+            return redirect('dashboard')
+        
+        
+        
+    context = {'ProfileForm': form }    
+            
+    return render(request,'journal/profile_management.html', context)        
+          
+            
+
+
+
+
+
+
 
 
 
