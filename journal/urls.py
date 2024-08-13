@@ -43,6 +43,8 @@ urlpatterns = [
     
     path("profile_management", views.profile_management, name="profile_management"),
     
+    path("delete_account", views.delete_account, name="delete_account"),
+    
 ]
 
 

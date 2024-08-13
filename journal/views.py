@@ -7,6 +7,7 @@ from django.contrib.auth.models import auth
 
 from django.contrib.auth import authenticate, login, logout
 
+from django.contrib.auth.models import User
 
 from django.contrib.auth.decorators import login_required
 
@@ -175,8 +176,6 @@ def profile_management(request):
     
     form = UpdateUserForm(instance=request.user)
     
-    
-
     if request.method == 'POST':
         
         form = UpdateUserForm(request.POST,instance=request.user)
@@ -186,9 +185,7 @@ def profile_management(request):
             form.save()
             
             return redirect('dashboard')
-        
-        
-        
+            
     context = {'ProfileForm': form }    
             
     return render(request,'journal/profile_management.html', context)        
@@ -197,7 +194,25 @@ def profile_management(request):
 
 
 
-
+@login_required(login_url='my_login')
+def delete_account(request):
+    
+    if request.method == 'POST':
+        
+        deleteUser = User.objects.get(username=request.user)
+        
+        deleteUser.delete()
+        
+        return redirect("")
+    
+    
+    return render(request,'journal/delete_account.html')  
+    
+    
+    
+    
+    
+    
 
 
 
