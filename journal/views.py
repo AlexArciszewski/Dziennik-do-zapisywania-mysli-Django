@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from . forms import CreateUserForm, LoginForm, ThoughtForm, UpdateUserForm
+from . forms import CreateUserForm, LoginForm, ThoughtForm, UpdateUserForm, UpdateProfileForm
 # Create your views here.
 
 from django.contrib.auth.models import auth
@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib import messages
 
-from  . models import Thought
+from  . models import Thought, Profile
 
 
 
@@ -32,7 +32,11 @@ def register(request):
         
         if form.is_valid():
             
+            current_user = form.save(commit=False)
+            
             form.save()
+            
+            profile = Profile.objects.create(user=current_user)
             
             messages.success(request, "User Created Successfully!")
             
@@ -72,7 +76,17 @@ def my_login(request):
 @login_required(login_url='my_login')
 def dashboard(request):
     
-    return render(request, 'journal/dashboard.html' )
+    # profile_pic = Profile.objects.get(user=request.user)
+    profile_pic, created = Profile.objects.get_or_create(user=request.user)
+    context = {'profilePic': profile_pic }
+    
+    
+    
+    
+    
+    
+    
+    return render(request, 'journal/dashboard.html', context )
 
 
 def user_logout(request):
@@ -176,17 +190,31 @@ def profile_management(request):
     
     form = UpdateUserForm(instance=request.user)
     
+    profile = Profile.objects.get(user=request.user)
+    
+    form_2 = UpdateProfileForm(instance=profile)
+    
+    
     if request.method == 'POST':
         
         form = UpdateUserForm(request.POST,instance=request.user)
+        
+        form_2 = UpdateProfileForm(request.POST,request.FILES, instance=profile)
         
         if form.is_valid():
             
             form.save()
             
             return redirect('dashboard')
+        
+        if form_2.is_valid():
             
-    context = {'ProfileForm': form }    
+            form_2.save()
+            
+            return redirect('dashboard')
+            
+            
+    context = {'UserUpdateForm': form, 'ProfileUpdateForm': form_2 }    
             
     return render(request,'journal/profile_management.html', context)        
           
