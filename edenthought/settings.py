@@ -160,7 +160,7 @@ EMAIL_PORT = '587'
 EMAIL_USE_TLS = 'True'
 
 EMAIL_HOST_USER = 'arciszew@yahoo.com' #gmail email
-EMAIL_HOST_PASSWORD ='dplialkhoepbmskg'      #APP hasło
+EMAIL_HOST_PASSWORD ='atdplialkhoepbmskg'      #APP hasło
 
 DEFAULT_FORM_EMAIL = 'arciszew@yahoo.com'  #gmail email
 
