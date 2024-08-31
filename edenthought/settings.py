@@ -157,12 +157,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.yahoo.com'
 EMAIL_PORT = '587'
-EMAIL_USE_TLS = 'True'
+EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = 'arciszew@yahoo.com' #gmail email
-EMAIL_HOST_PASSWORD ='atdplialkhoepbmskg'      #APP hasło
+EMAIL_HOST_USER = 'arciszew@yahoo.com' #yahoo email
+EMAIL_HOST_PASSWORD ='dplialkhoepbmskg'      #APP hasło
 
-DEFAULT_FORM_EMAIL = 'arciszew@yahoo.com'  #gmail email
+DEFAULT_FROM_EMAIL = 'arciszew@yahoo.com'  #yahoo email
 
 
 
