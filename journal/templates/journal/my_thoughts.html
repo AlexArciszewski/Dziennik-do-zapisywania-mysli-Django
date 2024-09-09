@@ -1,6 +1,5 @@
 {% extends 'journal/navbar.html' %}
 
-
 {% block content %}
 
 <h3> My Thought </h3>
@@ -11,9 +10,9 @@
 
 <div class="container bg-white shadow-md p-5 form-layout">
 
-    {{thought.title}}
+    <h3> {{thought.title}} </h3>
 
-    <br>
+
 
     {{thought.content}}
 
@@ -24,16 +23,18 @@
     <br>
     <br>
 
-    {{thought.user}}
+    By: {{thought.user}}
 
     <br>
     <br>
-    <a href="{% url  'update_thought' thought.id %}"> Update a thought </a>
+    <a class="btn btn-outline-primary btn-md w-100 btn-block p-2" href="{% url  'update_thought' thought.id %}"> Update
+    </a>
 
     <br>
     <br>
 
-    <a href="{% url  'delete_thought' thought.id %}"> Delete a thought </a>
+    <a class="btn btn-outline-danger btn-md w-100 btn-block p-2" href="{% url  'delete_thought' thought.id %}"> Delete
+    </a>
 
 </div>
 

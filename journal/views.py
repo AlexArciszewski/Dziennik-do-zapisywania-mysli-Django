@@ -16,6 +16,13 @@ from django.contrib import messages
 
 from  . models import Thought, Profile
 
+from django.core.mail import send_mail
+
+from django.conf import settings
+
+
+
+
 
 
 def homepage(request):
@@ -35,6 +42,13 @@ def register(request):
             current_user = form.save(commit=False)
             
             form.save()
+            
+            send_mail("Welcome to Edenthought", "Congratulations on creating your account", settings.DEFAULT_FROM_EMAIL,[current_user.email])
+            
+            
+            
+            
+            
             
             profile = Profile.objects.create(user=current_user)
             
