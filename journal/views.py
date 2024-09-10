@@ -94,12 +94,6 @@ def dashboard(request):
     profile_pic, created = Profile.objects.get_or_create(user=request.user)
     context = {'profilePic': profile_pic }
     
-    
-    
-    
-    
-    
-    
     return render(request, 'journal/dashboard.html', context )
 
 
