@@ -53,7 +53,7 @@ urlpatterns = [
     
     #  2 urls pozwalajacy na wyświetlenie wiadomosci o sukcesie połączenia i wysłania maila resetujacego haslow
     
-    path('reset_password_sent', auth_views.PasswordResetDoneView.as_view(template_name="journal/password-reset-sent.html"),name="password_reset_done"),
+    path('password_reset_sent', auth_views.PasswordResetDoneView.as_view(template_name="journal/password-reset-sent.html"),name="password_reset_done"),
  
     # 3 url pozwalający wsyłać linka na nasz adres email dzieki czemu możliwy jest reset hasła
     
