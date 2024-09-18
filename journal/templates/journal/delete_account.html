@@ -1,65 +1,33 @@
-{% extends 'journal/navbar.html'  %}
+{% extends 'journal/navbar.html' %}
 
+{% block content %}
 
+<br>
 
-{%  block content   %}
+<div class="container bg-white shadow-md p-5 form-layout">
+
+    <h3> Delete your account </h3>
+
+    <p> Are you sure you want to delete your account? </p>
 
     <br>
-    
-    <div class="container bg-white shadow-md p-5 form-layout">
-    
-        <h3>   Delete your account   </h3>
 
-        <p>   Are you sure you want to delete your account? </p>
+    <form method="POST" autocomplete="off">
+
+        {% csrf_token %}
 
         <br>
 
-        <form method="POST" autocomplete="off">
+        <button class="btn btn-outline-danger btn-md w-100 btn-block p-2" type="submit"> Yes Delete account </button>
 
-            {% csrf_token %}
-        
-        
-            <br>
-        
-            <button class="btn btn-outline-danger btn-md w-100 btn-block p-2" type="submit"> Yes Delete account </button>
-        
-        </form>
+    </form>
 
-        <a class="nav-link" href="{%  url 'profile_management' %}"> Or go to the profile management </a>
+    <a class="nav-link" href="{%  url 'profile_management' %}"> Or go to the profile management </a>
 
-    </div>
+</div>
 
-    <br>
+<br>
 
-    <br>
+<br>
 
-
-{% endblock  %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+{% endblock %}

@@ -1,85 +1,33 @@
 {% extends 'journal/navbar.html' %}
-
 {% load crispy_forms_tags %}
-
 {% block content %}
 
-<br>
-
 <div class="container bg-white shadow-md p-5 form-layout">
-
-    <h3> Update username and email </h3>
-
-    <br>
-
-    <br>
-
+    <h3>Update username and email</h3>
     <form method="POST" autocomplete="off">
-
         {% csrf_token %}
-
-        {{UserUpdateForm|crispy}}
-
-        <br>
-
-        <button class="btn btn-outline-primary btn-md w-100 btn-block p-2" type="submit"> Update </button>
-
+        {{ UserUpdateForm|crispy }}
+        <button class="btn btn-outline-primary btn-md w-100 btn-block p-2" type="submit">Update</button>
     </form>
-
 </div>
 
-<br>
-
 <div class="container bg-white shadow-md p-5 form-layout">
-
-    <h3> User Delete </h3>
-
-    <br>
-
-    <br>
-
-    <a class="nav-link" href="{%  url 'delete_account' %}"> Proceed to delete your account </a>
-
+    <h3>User Delete</h3>
+    <a class="nav-link" href="{% url 'delete_account' %}">Proceed to delete your account</a>
 </div>
 
-<br>
-
 <div class="container bg-white shadow-md p-5 form-layout">
-
-    <h3> Update username and email </h3>
-
-    <br>
-
-    <br>
-
+    <h3>Update profile photo</h3>
     <form method="POST" autocomplete="off" enctype="multipart/form-data">
-
         {% csrf_token %}
-
-        {{ProfileUpdateForm|crispy}}
-
-        <br>
-
-        <button class="btn btn-outline-primary btn-md w-100 btn-block p-2" type="submit"> Upload Profile Photo </button>
-
+        {{ ProfileUpdateForm|crispy }}
+        <button class="btn btn-outline-primary btn-md w-100 btn-block p-2" type="submit">Upload Profile Photo</button>
     </form>
-
 </div>
-
-<br>
 
 <div class="container bg-white shadow-md p-5 form-layout">
-
-    <h3> Reset your password </h3>
-
-    <br>
-
-    <a class="btn btn-outline-primary btn-md w-100 btn-block p-2" href="{% url  'reset_password' %}"> Reset Profile
-        Password here</a>
-
+    <h3>Reset your password</h3>
+    <a class="btn btn-outline-primary btn-md w-100 btn-block p-2" href="{% url 'reset_password' %}">Reset Profile Password here</a>
 </div>
-
-
-
 
 {% endblock %}

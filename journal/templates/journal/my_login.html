@@ -1,55 +1,37 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+<!DOCTYPE html>
 <html>
 
 <head>
-
     <title>Thought Notebook | Login</title>
-
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/morph/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-
 </head>
 
 <body>
-
-    <br>
-
     <div class="container bg-white shadow-md p-5 form-layout">
-
         <h3>Login to your account</h3>
-
-        <br>
-        <br>
 
         {% for message in messages %}
             {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
                 <p id="message-timer" class="alert alert-success text-center message-text">{{ message }}</p>
             {% endif %}
         {% endfor %}
-
     </div>
 
     <form method="POST" autocomplete="off">
-
         {% csrf_token %}
         {{ LoginForm|crispy }}
-
-        <br>
-
         <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit">Login</button>
-
     </form>
 
     <div class="text-center">
         <a class="nav-link" href="{% url 'reset_password' %}">Forgot your password? Proceed to reset your password</a>
     </div>
 
-    <br>
-
     <script src="{% static 'js/app.js' %}"></script>
-
 </body>
 
 </html>
