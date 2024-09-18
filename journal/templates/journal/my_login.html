@@ -1,60 +1,55 @@
 {% load static %}
-
 {% load crispy_forms_tags %}
 
 <html>
 
 <head>
 
-    <title> Thought Notebook | Login </title>
+    <title>Thought Notebook | Login</title>
 
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/morph/bootstrap.min.css">
-
-
-    <link rel="stylesheet" type="text/css" href="{% static ' css/styles.css'    %}">
-
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 
 </head>
-<br>
-<div class="container bg-white shadow-md p-5 form-layout"></div>>
 
-    <h3> Login your account </h3>
-
-
-    <br>
-    <br>
-
-{% for message in messages %}
-
-    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-
-        <p id="message-timer" class="alert alert-success float-center text-center message-text"> {{message}} </p>
-
-    {% endif %}
-
-
-{% endfor %}
-
-
-
-<form method="POST" autocomplete="off">
-
-    {% csrf_token %}
-
-    {{LoginForm|crispy}}
+<body>
 
     <br>
 
-    <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit"> Login </button>
+    <div class="container bg-white shadow-md p-5 form-layout">
 
-</form>
+        <h3>Login to your account</h3>
 
+        <br>
+        <br>
 
-</div>
+        {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <p id="message-timer" class="alert alert-success text-center message-text">{{ message }}</p>
+            {% endif %}
+        {% endfor %}
 
-<br>
+    </div>
 
-<script src="{%  static 'js/app.js'   %}"></script>
+    <form method="POST" autocomplete="off">
+
+        {% csrf_token %}
+        {{ LoginForm|crispy }}
+
+        <br>
+
+        <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit">Login</button>
+
+    </form>
+
+    <div class="text-center">
+        <a class="nav-link" href="{% url 'reset_password' %}">Forgot your password? Proceed to reset your password</a>
+    </div>
+
+    <br>
+
+    <script src="{% static 'js/app.js' %}"></script>
+
+</body>
 
 </html>
