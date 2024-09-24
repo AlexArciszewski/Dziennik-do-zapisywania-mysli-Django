@@ -6,6 +6,7 @@
     <title>Thought Notebook | Register</title>
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/morph/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="container bg-white shadow-md p-5 form-layout">
@@ -15,7 +16,7 @@
         <form method="POST" autocomplete="off">
             {% csrf_token %}
             {{ RegistrationForm|crispy }}
-            <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit">Create account</button>
+            <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit"><i class="fa-solid fa-user-plus"></i> &nbsp; Create account</button>
         </form>
     </div>
 </body>

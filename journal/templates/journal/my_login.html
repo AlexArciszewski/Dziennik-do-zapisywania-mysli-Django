@@ -2,32 +2,41 @@
 {% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Thought Notebook | Login</title>
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/morph/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
     <div class="container bg-white shadow-md p-5 form-layout">
         <h3>Login to your account</h3>
 
         {% for message in messages %}
-            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                <p id="message-timer" class="alert alert-success text-center message-text">{{ message }}</p>
-            {% endif %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <p id="message-timer" class="alert alert-success text-center message-text">{{ message }}</p>
+        {% endif %}
         {% endfor %}
     </div>
 
     <form method="POST" autocomplete="off">
         {% csrf_token %}
         {{ LoginForm|crispy }}
-        <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit">Login</button>
+        <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit"> <i class="fa-solid fa-key"></i> &nbsp; Login</button>
     </form>
+    <br>
+    <div class="text-center">
+        <a class="nav-link" href="{% url 'register' %}"> Don't have an account? Proceed to register</a>
+    </div>
+
 
     <div class="text-center">
-        <a class="nav-link" href="{% url 'reset_password' %}">Forgot your password? Proceed to reset your password</a>
+        <a class="nav-link" href="{% url 'reset_password' %}"> Forgot your password? Proceed to reset your password</a>
     </div>
 
     <script src="{% static 'js/app.js' %}"></script>
 </body>
+
 </html>
