@@ -1,12 +1,22 @@
+
 {% extends 'journal/navbar.html' %}
+{% load static %}
 
 {% block content %}
+
+    {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <p id="message-timer" class="alert alert-success text-center message-text"><i class="fa-solid fa-check"></i> &nbsp; {{ message }}</p>
+        {% endif %}
+    {% endfor %}
+
     <h3>My Thoughts</h3>
+
     <head>
         <title> Thoughts Notebook </title>
-
-
+    <br>    
     </head>
+
     {% for thought in AllThoughts %}
         <div class="container bg-white shadow-md p-5 form-layout">
             <h3>{{ thought.title }}</h3>
@@ -19,4 +29,7 @@
         </div>
     <br>
     {% endfor %}
+    
+<script src="{% static 'js/app.js' %}"></script>
+
 {% endblock %}

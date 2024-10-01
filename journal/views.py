@@ -91,6 +91,7 @@ def create_thought(request):
             thought = form.save(commit=False)
             thought.user = request.user
             thought.save()
+            messages.success(request, "Thought Created Successfully!")
             return redirect('my_thoughts')
     
     context = {'CreateThoughtForm': form}
@@ -124,6 +125,7 @@ def update_thought(request, pk):
         form = ThoughtForm(request.POST, instance=thought)
         if form.is_valid():
             form.save()
+            messages.success(request, "Thought Updated Successfully!")
             return redirect('my_thoughts')
     
     context = {'UpdateThought' : form}
@@ -142,6 +144,7 @@ def delete_thought(request, pk):
     
     if request.method == 'POST':
         thought.delete()
+        messages.success(request, "Thought Deleted Successfully!")
         return redirect('my_thoughts')
     
     return render(request,'journal/delete_thought.html')
